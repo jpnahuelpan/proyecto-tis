@@ -1,3 +1,7 @@
 # Folders
 venv/
 .github/
+__pycache__/
+
+# File extensions
+.pyc

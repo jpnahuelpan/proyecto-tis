@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+    <h2>Proyecto TIS-2022</h2>
+        <form class="pure-form pure-form-stacked" method="post">
+            <fieldset>
+              <legend>Login</legend>
+              <label for="stacked-email">Email</label>
+              <input type="email" id="stacked-email" placeholder="Email" name="stacked_email"/>
+              <span class="pure-form-message">Campo requerido.</span>
+              <label for="stacked-password">Password</label>
+              <input type="password" id="stacked-password" placeholder="Password" name="stacked_password"/>
+              <button type="submit" class="pure-button pure-button-primary">Sign in</button>
+            </fieldset>
+          </form>
+{% endblock %}
