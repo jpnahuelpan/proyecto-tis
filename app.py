@@ -5,7 +5,13 @@ from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 # modulos de la aplicación
-from proyecto_tis import create_connection
+from proyecto_tis import (
+    create_connection,
+    Query,
+)
+# configuración
+import config
+
 
 
 app = FastAPI()
@@ -32,20 +38,14 @@ async def validation(
         ):
 
     print(stacked_email, stacked_password)
-    con = create_connection("db/BaseDeDatos.db")
+    con = create_connection(config.USER_DB)
     cursor = con.cursor()
-    response = cursor.execute("select eMail from usuario;")
-    response = response.fetchall()[0][0]
-    print(f"Response: {response} stacked_email: {stacked_email}")
-    if stacked_email == response:
-        print("ya paso el fetchall")
-        id_pass = cursor.execute(f"select UserId from usuario where eMail='{stacked_email}';")
-        id_pass = id_pass.fetchall()[0][0]
-        print(f"id pass = {id_pass}")
-        password = cursor.execute(f"select password from password where idPass={id_pass};")
-        password = password.fetchall()[0][0]
-        print(f"id pass: {id_pass}, password: {password}")
-        if stacked_password == password:
+    q = Query(cursor)
+    email_registered = q.email_registered(stacked_email)
+    if email_registered:
+        id_pass = q.get_password_id(stacked_email)
+        password = q.get_password(id_pass)
+        if password == stacked_password:
             print("Acceso aprovado!")
             redirect_url = request.url_for('entry')
             print(redirect_url)
