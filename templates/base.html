@@ -8,13 +8,33 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
     <title>Proyecto TIS-2022</title>
     <style type="text/css">
-      html,
-      body,
+      html{background-color: rgb(113, 198, 238)}
+      body{background-color: rgb(192, 220, 236)}
       #container {
         margin: auto;
         width: 60%;
         border: 3px solid #3383c5;
         padding: 10px;
+      }
+      .wrapper .sidebar{
+        background: rgb(5, 68, 104);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 225px;
+        height: 100%;
+        padding: 20px 0;
+        transition: all 0.5s ease;
+      }
+      content{
+        background: rgb(120, 214, 206);
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 225px;
+        height: 100%;
+        padding: 20px 0;
+        transition: all 0.5s ease;
       }
       h2{margin-left:50px;
         margin-top:40px;
@@ -23,16 +43,14 @@
     {% endblock %}
   </head>
   <body>
+    
     <div id="header">
       {% block header %}{% endblock %}
     </div>
-
-      <div id="content">
-        {% block content %}{% endblock %}
-      </div>
-      <div id="table">
-        {% block tables %}{% endblock %}
-      </div>
+    {% block wrapper %}{% endblock %}
+      
+    {% block content %}{% endblock %}
+    {% block tables %}{% endblock %}
       <div id="container" style="margin-top: 200px; ">
         {% block container2 %}{% endblock %}
         <div style="background-color: rgb(60, 142, 196); fill:currentColor; max-height: 60px;" class="footer l-box is-center">

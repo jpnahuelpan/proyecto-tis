@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block wrapper %}
+    
+    <div class="wrapper">
+      
+      <!--Top menu -->
+      <div class="sidebar">
+        <h3>Proyecto TIS-2022</h3>
+        <form class="pure-form pure-form-stacked" method="post">
+          <fieldset>
+            <label for="n-cluster">Número de clusters</label>
+            <input type="number" id="n-cluster" placeholder="Ej: 3" name="n-cluster"/>
+            <label for="stacked-tienda">Tienda</label>
+            <select id="stacked-tienda">
+                <option>Falabela</option>
+                <option>Ripley</option>
+                <option>Paris</option>
+            </select>
+            <button type="submit" class="pure-button pure-button-primary">Iniciar</button>
+          </fieldset>
+        </form>
+      </div>
+
+  </div>
+{% endblock %}
+{% block content %}
+<div id="content" class="content">
+  <h2>xd</h2>
+</div>
+{% endblock %}

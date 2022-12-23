@@ -1,7 +1,11 @@
 # Folders
 venv/
 .github/
+data/
 __pycache__/
 
 # File extensions
 .pyc
+
+#credenciales.
+credenciales.py

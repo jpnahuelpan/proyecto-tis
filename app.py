@@ -64,9 +64,13 @@ async def validation(
             )
 
 
-@app.get('/entry')
-async def entry():
-    return "Acceso aprovado!"
+@app.get('/entry', response_class=HTMLResponse)
+async def entry(request: Request):
+    return templates.TemplateResponse(
+        "principal.html",
+        {
+            "request": request,
+            })
 
 
 # @app.post('/ovido', response_class=RedirectResponse)

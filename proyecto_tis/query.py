@@ -22,7 +22,7 @@ class Query():
             select eMailId from email where eMail={email!r}
         """
         response = self._cursor.execute(query)
-        response = response.fetchall()
+        response = response.fetchall()[0][0]
         return response
 
     def get_password_id(self, password):
@@ -67,6 +67,7 @@ class Query():
         self._cursor.execute(email)
         self._con.commit()
         email_id = self.get_email_id(user_data["email"])
+        print(email_id)
         user = f"""
             insert into user (nombre, apellidoP, apellidoM, eMailId) values(
                 {user_data["name"]!r},
